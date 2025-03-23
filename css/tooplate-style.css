@@ -108,33 +108,32 @@ b, strong {
 }
 
 .animated-info {
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 5px;
+  display: inline-flex;
+  align-items: center;
   min-width: 260px;
+  height: 40px; /* Ajusta según la altura de tu texto */
   position: relative;
+  overflow: hidden;
 }
 
 .animated-item {
   color: #ffc200;
+  font-size: 32px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  opacity: 0;
+  animation: BottomTotop 6s linear infinite;
 }
 
-.animated-item {
-  font-size: 32px;
-  line-height: inherit;
-  display: inline-block;
-  opacity: 0;
-  overflow: hidden;
-  position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  animation: BottomTotop 6s linear infinite 0s;
-}
-.animated-item:nth-child(2n+2) {
+.animated-item:nth-child(2) {
   animation-delay: 2s;
 }
-.animated-item:nth-child(3n+3) {
+
+.animated-item:nth-child(3) {
   animation-delay: 4s;
 }
 
