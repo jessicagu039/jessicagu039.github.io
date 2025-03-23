@@ -105,15 +105,17 @@ b, strong {
 
 .animated {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .animated-info {
   display: inline-flex;
   align-items: center;
-  min-width: 260px;
-  height: 40px; /* Ajusta según la altura de tu texto */
-  position: relative;
+  height: 40px; /* Ajusta según el tamaño del texto */
   overflow: hidden;
+  position: relative;
+  white-space: nowrap;
 }
 
 .animated-item {
@@ -121,12 +123,14 @@ b, strong {
   font-size: 32px;
   display: inline-block;
   position: absolute;
-  top: 0;
   left: 0;
-  width: 100%;
-  text-align: left;
   opacity: 0;
-  animation: BottomTotop 6s linear infinite;
+  animation: fadeInOut 6s linear infinite;
+}
+
+/* Control de la animación para cada elemento */
+.animated-item:nth-child(1) {
+  animation-delay: 0s;
 }
 
 .animated-item:nth-child(2) {
@@ -136,6 +140,16 @@ b, strong {
 .animated-item:nth-child(3) {
   animation-delay: 4s;
 }
+
+/* Definición de la animación */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  30% { opacity: 1; }
+  40% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 0; }
+}
+
 
 @keyframes BottomTotop {
   0% {
