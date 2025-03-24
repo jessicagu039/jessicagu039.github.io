@@ -8,6 +8,13 @@ https://www.tooplate.com/view/2115-marvel
 
 
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,700");
+
+/* Reducir el padding de la sección full-screen */
+.about.full-screen {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
 body {
   font-family: "Maven Pro", sans-serif;
   padding-top: 70px;
@@ -61,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   color: #212121;
-  font-size: 2.8em;
+  font-size: 2.3em;
   margin: 24px 0;
 }
 
@@ -79,6 +86,45 @@ h3,
 b, strong {
   font-weight: bold;
 }
+
+/* Asegúrate de que la barra se muestre vertical y con los estilos deseados */
+#vertical-icon-bar {
+  position: fixed !important;
+  top: 80% !important;
+  left: 5px !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 5px !important;
+  z-index: 1000 !important;
+}
+
+/* Opcional: Estilos para los enlaces de la barra */
+#vertical-icon-bar a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+/* Opcional: Efecto hover */
+#vertical-icon-bar a:hover {
+  background: #ffffff;
+}
+
+/* Ajusta el tamaño de las imágenes dentro de la barra */
+#vertical-icon-bar a img {
+  width: 24px; /* O el tamaño que prefieras */
+  height: auto;
+  display: block;
+}
+
 
 .custom-btn {
   background: #eee;
@@ -102,52 +148,40 @@ b, strong {
   background: #ffc200;
   color: #ffffff !important;
 }
-
-.animated {
-  position: relative;
+.animated-text {
   display: flex;
   align-items: center;
 }
 
 .animated-info {
-  display: inline-flex;
-  align-items: center;
-  height: 40px; /* Ajusta según el tamaño del texto */
-  overflow: hidden;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-top: 2px;
+  min-width: 70%;
   position: relative;
-  white-space: nowrap;
 }
 
 .animated-item {
   color: #ffc200;
-  font-size: 32px;
-  display: inline-block;
-  position: absolute;
-  left: 0;
+  font-size: 40px;
+  line-height: inherit;
+  display: block;
   opacity: 0;
-  animation: fadeInOut 6s linear infinite;
+  overflow: hidden;
+  position: absolute;
+  top: -26px;
+  right: 0;
+  left: 15px;
+  animation: BottomTotop 9s linear infinite 0s;
 }
 
-/* Control de la animación para cada elemento */
-.animated-item:nth-child(1) {
-  animation-delay: 0s;
-}
 
-.animated-item:nth-child(2) {
-  animation-delay: 2s;
+/* Control de aparición */
+.animated-item:nth-child(2n+2) {
+  animation-delay: 3s;
 }
-
-.animated-item:nth-child(3) {
-  animation-delay: 4s;
-}
-
-/* Definición de la animación */
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(10px); }
-  10% { opacity: 1; transform: translateY(0); }
-  30% { opacity: 1; }
-  40% { opacity: 0; transform: translateY(-10px); }
-  100% { opacity: 0; }
+.animated-item:nth-child(3n+3) {
+  animation-delay: 6s;
 }
 
 
@@ -301,6 +335,72 @@ b, strong {
   font-size: 30px;
   color: #ffffff;
 }
+/* habilidades SECTION */
+
+
+/* Contenedor de habilidades */
+.cards_container {
+  display: flex;
+  justify-content: center;  /* Centra las columnas */
+  gap: 4rem;                /* Espacio entre columnas */
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+}
+
+/* Columnas individuales */
+.skills-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 2 tarjetas por fila */
+  gap: 1.5rem;                          /* Espaciado entre tarjetas */
+  justify-items: center;
+}
+
+/* Título de cada columna */
+.skills-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  grid-column: 1 / -1;        /* Hace que ocupe todas las columnas */
+  margin: 3rem 0 1rem;         /* margen: top 3rem, lateral 0, bottom 1rem */
+}
+
+/* Tarjetas de habilidades */
+.cards--habilidades {
+  background-color: #ffffff;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 10rem;
+  height: 11rem;
+  padding: 1rem;  /* Opcional, para dar algo de espacio interno */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards--habilidades:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen dentro de la tarjeta */
+.cards--habilidades img {
+  width: 5rem;
+  height: auto;
+}
+
+/* Texto dentro de la tarjeta */
+.cards--habilidades p {
+  color: var( #000000);
+  font-family: 'Cooper Hewitt', sans-serif;
+  letter-spacing: 0.1rem;
+  font-size: 1.4rem;
+  margin-top: 0.7rem;
+}
+
+
 
 .dark-mode {
   background: #0c0c0d;
@@ -493,9 +593,11 @@ b, strong {
     display: none;
   }
 
-  .about-image {
-    margin-top: 4em;
+  .about-image img {
+    width: 400px; /* Tamaño fijo */
+    height: auto; /* Mantiene la proporción */
   }
+  
 
   .mobile-mt-2,
   .contact-form {
